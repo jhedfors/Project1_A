@@ -1,4 +1,40 @@
-select * from users;
+/*
+/main
+	login/registration
+		name
+        username
+        password
+        confirm_pw
+        
+/travels
+	displays all trips separated by subscribed/created trip and all other trips
+		destination
+        description
+        start_date
+        end_date
+        planner_name
+        dest_id
+        
+    with link to join
+/travels/add
+	create new trip
+		destination
+        description
+        start_date
+        end_date
+		user_id
+
+/travels/destination/#id
+	displays the individual trip
+    list of those attending
+
+*/
+
+
+SELECT 
+    *
+FROM
+    users;
 select * from schedules;
 select * from destinations;
 
@@ -12,8 +48,6 @@ WHERE username='jhedfors';
 select * from destinations;
 -- show all destinations
 
-INSERT INTO destinations (destination, description, start_date, end_date,created_at, modified_at,user_planner_id)
-VALUES ('Mountain View, CA', 'Tour Google campus', '2016-05-10', '2016-05-11', NOW(),NOW(),2);
 
 -- add destination
 
@@ -39,17 +73,33 @@ FROM
 -- show all schedules for user
 
 
--- show all schedules
+-- show all going to destination
  SELECT 
-    users.name, destination, start_date, end_date, description
+    users.id, users.name
 FROM
     destinations
         LEFT JOIN
-    schedules ON destinations.id = schedules.destination_id 
+    schedules ON destinations.id = schedules.destination_id
         LEFT JOIN
-    users ON users.id = schedules.user_id  OR users.id = destinations.user_planner_id
-	WHERE destinations.id = 1; 
+    users ON users.id = schedules.user_id
+WHERE
+    destinations.id = 2; 
 -- show all schedules for user
+
+-- show_destination_details
+SELECT 
+    users.name AS planner_name,
+    destinations.destination,
+    description,
+    start_date,
+    end_date
+FROM
+    users
+        LEFT JOIN
+    destinations ON destinations.user_planner_id = users.id
+WHERE
+    destinations.id = 2;
+
  SELECT 
     users.name, destination, start_date, end_date, description
 FROM
@@ -58,7 +108,7 @@ FROM
     schedules ON destinations.id = schedules.destination_id 
         LEFT JOIN
     users ON  users.id = destinations.user_planner_id
-   WHERE destinations.id = ; 
+   WHERE destinations.id = 2; 
 -- show all schedules not for user
 
 
