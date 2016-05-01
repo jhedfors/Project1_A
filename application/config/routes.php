@@ -3,10 +3,10 @@
 $route['default_controller'] = "dashboard";
 // $route['register'] = "/dashboard/register";
 $route['travels'] = "/dashboard/travels_page";
-$route['travels/destination/(:num)'] = "dashboard/destination_page/$1";
-$route['join_trip/(:num)'] = "dashboard/join_trip/$1";
-$route['travels/add'] = "dashboard/add_destination_page";
-$route['logout'] = "dashboard/logout";
+$route['travels/destination/(:num)'] = "/dashboard/destination_page/$1";
+$route['join_trip/(:num)'] = "/dashboard/join_trip/$1";
+$route['travels/add'] = "/dashboard/add_destination_page";
+$route['logout'] = "/dashboard/logout";
 $route['404_override'] = '';
 
 
