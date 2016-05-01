@@ -3,7 +3,7 @@
 class Dashboard extends CI_Controller {
 	public function __construct(){
 		parent:: __construct();
-		$this->load->model('Dashboard_model');
+		$this->load->model('dashboard_model');
 	}
 	public function index()
 	{
@@ -18,7 +18,7 @@ class Dashboard extends CI_Controller {
 		}
 		else{
 			$post = $this->input->post();
-			if($this->Dashboard_model->login($post)){
+			if($this->dashboard_model->login($post)){
 				redirect('travels');
 			}
 			redirect('unanticipated_error');
@@ -35,7 +35,7 @@ class Dashboard extends CI_Controller {
 		}
 		else{
 			$post = $this->input->post();
-			if($this->Dashboard_model->register($post) && $this->Dashboard_model->login($post)){
+			if($this->dashboard_model->register($post) && $this->dashboard_model->login($post)){
 				redirect('travels');
 			}
 			redirect('unanticipated_error');
@@ -43,7 +43,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function check_preexisting_username($post_username){
-		$record = $this->Dashboard_model->show_by_username($post_username);
+		$record = $this->dashboard_model->show_by_username($post_username);
 		if($record){
 			$this->form_validation->set_message('check_preexisting_username', '%s is already in use');
 			return FALSE;
@@ -73,16 +73,16 @@ class Dashboard extends CI_Controller {
 	}
 	public function travels_page(){
 		$active_id = $this->session->userdata('active_id');
-		$trips = $this->Dashboard_model->get_all_trips($active_id);
+		$trips = $this->dashboard_model->get_all_trips($active_id);
 		$this->load->view('travels_view',['trips'=> $trips]);
 	}
 	public function destination_page($id){
-		$destination['details'] = $this->Dashboard_model->show_destination_details($id);
-		$destination['attendees'] = $this->Dashboard_model->show_all_going_to_destination($id);
+		$destination['details'] = $this->dashboard_model->show_destination_details($id);
+		$destination['attendees'] = $this->dashboard_model->show_all_going_to_destination($id);
 		$this->load->view('destination_view',['destination'=> $destination]);
 	}
 	public function join_trip($id){
-		$this->Dashboard_model->join_trip($id);
+		$this->dashboard_model->join_trip($id);
 		redirect('travels');
 	}
 	public function add_destination_page(){
@@ -100,7 +100,7 @@ class Dashboard extends CI_Controller {
 		}
 		else {
 			die('valid date');
-			$this->Dashboard_model->add_destination($post);
+			$this->dashboard_model->add_destination($post);
 			redirect('/travels');
 		}
 	}
