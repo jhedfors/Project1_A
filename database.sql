@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: belt_exam
+-- Host: 127.0.0.1    Database: travel_dashboard
 -- ------------------------------------------------------
 -- Server version	5.5.41-log
 
@@ -34,7 +34,7 @@ CREATE TABLE `destinations` (
   PRIMARY KEY (`id`),
   KEY `fk_destinations_users1_idx` (`user_planner_id`),
   CONSTRAINT `fk_destinations_users1` FOREIGN KEY (`user_planner_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `destinations` (
 
 LOCK TABLES `destinations` WRITE;
 /*!40000 ALTER TABLE `destinations` DISABLE KEYS */;
-INSERT INTO `destinations` VALUES (1,'Tokyo, Japan','Take a tour of Temples','2016-06-30 00:00:00','2016-07-06 00:00:00','2016-04-22 10:01:57','2016-04-22 10:01:57',1),(2,'London, England','Tour Thames','2016-06-30 00:00:00','2016-07-06 00:00:00','2016-04-22 15:39:01','2016-04-22 15:39:01',1),(3,'Nagasaki, Japan','Site seeing','2016-06-30 00:00:00','2016-07-06 00:00:00','2016-04-22 16:23:40','2016-04-22 16:23:40',1),(4,'Anahiem, CA','Amusement park','2016-05-30 00:00:00','2016-06-06 00:00:00','2016-04-23 06:12:45','2016-04-23 06:12:45',2),(5,'Mountain View, CA','Tour Google campus','2016-05-10 00:00:00','2016-05-11 00:00:00','2016-04-23 06:19:57','2016-04-23 06:19:57',2),(7,'Cancun','Relax at an all-inclusive resort','2016-04-23 00:00:00','2016-04-30 00:00:00','2016-04-23 17:36:40','2016-04-23 17:36:40',17),(8,'Seaside, OR','Go to the beach!','2016-04-30 00:00:00','2016-04-23 00:00:00','2016-04-23 19:00:46','2016-04-23 19:00:46',1),(9,'San Diego','Fun in the sun!','2016-05-07 00:00:00','2016-04-30 00:00:00','2016-04-23 19:02:44','2016-04-23 19:02:44',1),(10,'ajsdlfjl','asdfasdf','2016-04-30 00:00:00','2016-04-29 00:00:00','2016-04-23 19:06:34','2016-04-23 19:06:34',1),(11,'asdf','asdf','2016-04-30 00:00:00','2016-04-29 00:00:00','2016-04-23 19:37:28','2016-04-23 19:37:28',1);
+INSERT INTO `destinations` VALUES (1,'Tokyo, Japan','Take a tour of Temples','2016-06-30 00:00:00','2016-07-06 00:00:00','2016-04-22 10:01:57','2016-04-22 10:01:57',1),(2,'London, England','Tour Thames','2016-06-30 00:00:00','2016-07-06 00:00:00','2016-04-22 15:39:01','2016-04-22 15:39:01',1),(3,'Nagasaki, Japan','Site seeing','2016-06-30 00:00:00','2016-07-06 00:00:00','2016-04-22 16:23:40','2016-04-22 16:23:40',1);
 /*!40000 ALTER TABLE `destinations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,7 +63,7 @@ CREATE TABLE `schedules` (
   KEY `fk_schedules_destinations1_idx` (`destination_id`),
   CONSTRAINT `fk_schedules_destinations1` FOREIGN KEY (`destination_id`) REFERENCES `destinations` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_schedules_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,7 +72,6 @@ CREATE TABLE `schedules` (
 
 LOCK TABLES `schedules` WRITE;
 /*!40000 ALTER TABLE `schedules` DISABLE KEYS */;
-INSERT INTO `schedules` VALUES (35,16,2),(36,17,2),(37,17,3),(38,17,5),(39,1,7),(40,17,9),(41,2,9);
 /*!40000 ALTER TABLE `schedules` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -100,7 +99,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Jeff Hedfors','jhedfors','a642a77abd7d4f51bf9226ceaf891fcbb5b299b8','2016-04-22 09:53:11','2016-04-22 09:53:11'),(2,'Kazu Hedfors','khedfors','a642a77abd7d4f51bf9226ceaf891fcbb5b299b8','2016-04-22 10:08:01','2016-04-22 10:08:01'),(12,'Jayden Hedfors','jkhedfors','a642a77abd7d4f51bf9226ceaf891fcbb5b299b8','2016-04-23 11:23:07','2016-04-23 11:23:07'),(13,'Keefer Hedfors','kshedfors','a642a77abd7d4f51bf9226ceaf891fcbb5b299b8','2016-04-23 11:24:50','2016-04-23 11:24:50'),(14,'Linda Goebel','linda38','a642a77abd7d4f51bf9226ceaf891fcbb5b299b8','2016-04-23 11:25:55','2016-04-23 11:25:55'),(15,'l','','','2016-04-23 11:50:31','2016-04-23 11:50:31'),(16,'Jim Hedford','jhedford','a642a77abd7d4f51bf9226ceaf891fcbb5b299b8','2016-04-23 12:19:52','2016-04-23 12:19:52'),(17,'Shane Medberry','smedberry','a642a77abd7d4f51bf9226ceaf891fcbb5b299b8','2016-04-23 12:22:35','2016-04-23 12:22:35');
+INSERT INTO `users` VALUES (1,'Jeff Hedfors','jhedfors','a642a77abd7d4f51bf9226ceaf891fcbb5b299b8','2016-04-22 09:53:11','2016-04-22 09:53:11');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -113,4 +112,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-23 21:09:03
+-- Dump completed on 2016-07-13  9:27:30
