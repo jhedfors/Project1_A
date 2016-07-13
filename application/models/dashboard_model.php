@@ -22,13 +22,15 @@ class Dashboard_model extends CI_Model {
 			return true;
 		}
 		else{
+			die('do we get here?');
 		return false;
 		}
 	}
 	public function register($post){
+		$pw_hash = do_hash($post['password']);
 		$query = "insert into users (name, username, password,created_at, modified_at) values(?,?,?,NOW(),NOW())";
 		$values =
-			 ["{$post['name']}","{$post['username']}","{$post['password']}"];
+			 ["{$post['name']}","{$post['username']}","{$pw_hash}"];
 		$this->db->query($query, $values);
 		return true;
 	}

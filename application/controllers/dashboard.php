@@ -99,7 +99,6 @@ class Dashboard extends CI_Controller {
 			$this->load->view('add_destination_view');
 		}
 		else {
-			die('valid date');
 			$this->dashboard_model->add_destination($post);
 			redirect('/travels');
 		}
