@@ -28,7 +28,7 @@
          <div class="errors">
            <?php echo validation_errors() ?>
          </div>
-         <form class="" action="/dashboard/add_destination" method="post">
+         <form class="" action="/travels/add_destination" method="post">
            <label for="destination">Destination:</label><input type="text" name="destination" value="">
            <label for="description">Description</label><input type="text" name="description" value="">
            <label for="start_date">Travel Date From:</label><input type="date" name="start_date" value="">

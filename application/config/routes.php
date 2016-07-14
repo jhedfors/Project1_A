@@ -1,12 +1,12 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$route['default_controller'] = "dashboard";
+$route['default_controller'] = "users";
 // $route['register'] = "/dashboard/register";
-$route['travels'] = "/dashboard/travels_page";
-$route['travels/destination/(:num)'] = "/dashboard/destination_page/$1";
-$route['join_trip/(:num)'] = "/dashboard/join_trip/$1";
-$route['travels/add'] = "/dashboard/add_destination_page";
-$route['logout'] = "/dashboard/logout";
+$route['travels'] = "/travels/travels_page";
+$route['travels/destination/(:num)'] = "/travels/destination_page/$1";
+$route['join_trip/(:num)'] = "/travels/join_trip/$1";
+$route['travels/add'] = "/travels/add_destination_page";
+$route['logout'] = "/users/logout";
 $route['404_override'] = '';
 
 
